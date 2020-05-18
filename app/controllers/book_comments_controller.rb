@@ -4,8 +4,12 @@ class BookCommentsController < ApplicationController
        comment = current_user.book_comments.new(book_comment_params)
        comment.book_id = book.id
        comment.user_id = current_user.id
-       comment.save
-       redirect_to book_path(book)
+       if comment.save
+          redirect_to book_path(book)
+       else
+        flash[:error] = "error"
+        redirect_to request.referrer 
+       end
     end
 
     def destroy
