@@ -63,39 +63,32 @@
          
          </table>
          <!-- コメント表示 -->  
-         <ol>
+
          <% @book.book_comments.each do |book_comment| %>
-          <li class="comment">
-              <div class="comment-body bb">
-                  <div class="avater">
+           <table>
+              <tr>
+                  <td>
                     <%= attachment_image_tag @user_id, :profile_image_id, class: "img-circle pull-left profile-thumb", fallback: "no_image.jpg", size: "60x60" %>
-                    </div>
-                  <div class="comment-text">
-                      <div class="comment-author clearfix">
-                          <a href="#" class="link-author">
-                            <%= book_comment.user.name %>
-                          </a>
-                          <span class="comment-meta">
-                            <span class="comment-date">
-                             <%= book_comment.created_at.strftime('%Y/%m/%d') %>
-                            </span>
-                          </span>
-                          <div>
-                          <%= book_comment.comment %>
-                          </div>
-                      </div>
-                      
-                  </div>
-              </div><br>
+                  </td>
+                  <td>
+                   <a href="#" class="link-author">
+                      <%= book_comment.user.name %>
+                   </a>
+                  </td>
+                  <td>
+                  <%= book_comment.created_at.strftime('%Y/%m/%d') %>
+                  </td>
+                  <td>
+                    <%= book_comment.comment %>
+                  </td>
               <% if book_comment.user == current_user %>
-              <div class="destroy">
-               <%= link_to "Delete", book_book_comments_path(book_comment),method: :delete, class: "btn btn-danger" %>
-              </div>
+                  <td>
+                  <%= link_to "Delete", book_book_comments_path(book_comment),method: :delete, class: "btn btn-danger" %>
+                  </td>
               <% end %>
+            <tr>
+            </table>
          <% end %>
-
-         </ol>
-
          <!-- コメント表示ここまで -->
 
          <!-- コメント投稿フォーム -->
