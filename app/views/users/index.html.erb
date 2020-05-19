@@ -9,6 +9,7 @@
    </div>
   <div class="row">
      <div class="col-xs-3">
+        <%= render 'books/userinfo', book: @book, user: @user %>
         <%= render 'books/side', book: @book, user: @user %>
      </div>
     <% if flash[:notice] %>
