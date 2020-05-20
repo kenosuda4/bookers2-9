@@ -2,7 +2,7 @@
   <div class="row">
       <div class="col-xs-3">
          <%= render 'books/userinfo', user: @user %>
-         <%= render 'books/side', book: @new_book %>   #bookscontroller内の記述と同じbook: @new_bookで記述していたからArgumentError in Users#followers First argument in form cannot contain nil or be emptyと表示された
+         <%= render 'books/side', book: @book %>   #bookscontroller内の記述と同じbook: @new_bookで記述していたからArgumentError in Users#followers First argument in form cannot contain nil or be emptyと表示された
          <%= render 'relationships/follow', book: @book, user: @user, users: @users  %>
       </div>
       <div class="col-xs-9">
@@ -27,6 +27,12 @@
               </td>
               <td>
                 <%= user.name %>
+              </td>
+              <td>
+              フォロー数<%= user.followings.count %>
+              </td>
+              <td>
+              フォロワー数<%= user.followers.count %>
               </td>
               <td>
                 <%= link_to "show",user_path(user.id), class: "user_#{user.id}" %>
