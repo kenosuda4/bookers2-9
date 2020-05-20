@@ -31,6 +31,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def following
+    @book = Book.new
+    @user = User.find(params[:id])
+    @users = @user.followings
+    render 'show_follow'
+  end
+
+  def followers
+    @book = Book.new    
+    @user = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
+    
+  end
+
+
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
@@ -42,7 +58,5 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
-  
 
 end

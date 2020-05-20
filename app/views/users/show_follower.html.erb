@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+      <div class="col-xs-3">
+         <%= render 'books/userinfo', user: @user %>
+         <%= render 'books/side', book: @new_book %>   #bookscontroller内の記述と同じbook: @new_bookで記述していたからArgumentError in Users#followers First argument in form cannot contain nil or be emptyと表示された
+         <%= render 'relationships/follow', book: @book, user: @user, users: @users  %>
+      </div>
+      <div class="col-xs-9">
+    <h2>Followers</h2>
+    <p><%= @user.name %>がフォローされているユーザー</p>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+        <th>image</th>
+        <th>name</th>
+        <th></th>
+        <th></th>
+        </tr>
+        </thead>
+
+              <% @user.followers.each do |user| %>
+              <tbody>
+            <tr>
+              <td>
+                 <div><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format:'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg" %></div>
+              </td>
+              <td>
+                <%= user.name %>
+              </td>
+              <td>
+                <%= link_to "show",user_path(user.id), class: "user_#{user.id}" %>
+              </td>
+            </tr>
+        </tbody>
+    <% end %>
+    </table>
+    </div>
+    </div>
+</div>

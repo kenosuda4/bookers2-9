@@ -36,6 +36,11 @@
                 <%= user.name %>
               </td>
               <td>
+              <%= render 'relationships/follow', book: @book, user: user  %>
+              </td>
+              <td>
+              </td>
+              <td>
               <%= link_to "Show", user_path(user.id) %>
               </td>
             </tr>
