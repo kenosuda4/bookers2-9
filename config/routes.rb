@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     resource :book_comments, only: [:create, :destroy]
   end
   
-  
-
-
+  #get '/search' => 'search#search'
+  #get '/search', to: 'search#search'
+  #↓=> 'search#searchをsearchs#search'に変更
+  get '/search' => 'searchs#search', as: 'search' 
  
 
 

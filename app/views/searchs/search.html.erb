@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-3">
+    
+      </div>
+      <div class="col-xs-9">
+      <% if @model == 'user' %>
+      <h3>Users search for '<%= @content %>'</h3>
+      <%= render 'users/index', users: @detas %>
+      <% else @model == 'book' %>
+      <h3>Books search for '<%= @content %>'</h3>
+        <%= render 'books/index', books: @detas %>
+      <% end %>
+      </div>
+    </div>
+</div>
