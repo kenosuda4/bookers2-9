@@ -7,7 +7,7 @@ class SearchsController < ApplicationController
     end
 
     private
-    #SQLite3::SQLException: near "LKE": syntax error: SELECT "users".* FROM "users" WHERE (name LKE'%') LIKEの部分のミス
+    
     def match(model,content)
         if model =='user'
             User.where(name:content)
@@ -15,10 +15,11 @@ class SearchsController < ApplicationController
             Book.where(title:content)
         end
     end
-
+        #SQLite3::SQLException: near "LKE": syntax error: SELECT "users".* FROM "users" WHERE (name LKE'%') LIKEの部分のスペルミス
+        
     def forward(model,content)
         if model == 'user'
-            User.where("name LKE?","%#{content}")
+            User.where("name LIKE?","%#{content}")
         elsif model == 'book'
             Book.where("title LIKE?","%#{content}")
         end
