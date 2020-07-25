@@ -22,22 +22,9 @@
       <td>
         <%= book.body %>
       </td>
-      <% if book.favorited_by?(current_user) %>
-      <td>
-      <%= link_to book_favorites_path(book), method: :delete do %>
-        <i><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></i>
-        <%= book.favorites.count %>いいね
-        <% end %>
-      </td>
-      <% else %>
-      <td>
-      <%= link_to book_favorites_path(book), method: :post do %>
-        <i><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></i>
-        <%= book.favorites.count %>　いいね
-        <% end %>
-      </td>
-    
-      <% end %>
+      
+      <%= render 'books/like', book: book %>
+
       <td>
         コメント<%= book.book_comments.count %>件
       </td>
